@@ -1,0 +1,67 @@
+
+---
+title: "Air Quality Data Analysis (2018–2020)"
+author: "Tianyang Peng"
+date: "November 21, 2026"
+output: word_document
+---
+
+# Introduction
+
+This project uses EPA air quality data from 2018 to 2020. I cleaned the data and made tables and plots for CO, PM2.5, and O3. The 2020 data only include January to April.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+source("project 2.R", local = TRUE)
+```
+
+# Data Cleaning
+
+I wrote a function to clean the data. It removes duplicate rows, changes negative values to zero, and calculates daily averages. It can also change O3 units from ppm to ppb.
+
+# Summary Tables
+
+The tables show the minimum and maximum daily concentrations for each year.
+
+```{r table2018}
+knitr::kable(table2018,
+             caption = "Daily Pollutant Concentrations in 2018")
+```
+
+```{r table2019}
+knitr::kable(table2019,
+             caption = "Daily Pollutant Concentrations in 2019")
+```
+
+```{r table2020}
+knitr::kable(table2020,
+             caption = "Daily Pollutant Concentrations in 2020")
+```
+
+# Visualizations
+
+## Plot 1: CO and O3 by Month
+
+This plot shows monthly averages and 95% confidence intervals using daily data from all available years.
+
+```{r plot1, fig.width=7, fig.height=6.5}
+print(plot1)
+```
+
+I used separate panels with different y-axis scales because CO and O3 have different concentration ranges. This makes both patterns easier to see.
+
+## Plot 2: PM2.5 by Month and Year
+
+```{r plot2, fig.width=7, fig.height=4.5}
+print(plot2)
+```
+
+I used lines and points to show monthly changes and compare the three years.
+
+# Interpretation
+
+CO was generally higher in winter, while O3 was higher in spring and summer. PM2.5 changed across months and years, but did not show a clear seasonal pattern. The 2020 data only cover four months, so comparisons are limited.
+
+# AI Use Statement
+
+I used ChatGPT to help to write and fix my code and improve the plots. I also used ChatGPT to generate an README.md and Rmd file to summarize the code. I checked the code and results in RStudio, including the tables, plots, duplicate dates, negative values, and unit conversion.
